@@ -28,7 +28,6 @@ find_package(sensor_msgs REQUIRED)
 
 find_package(ament_cmake REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(Open3D)
 find_package(Boost QUIET)
 find_package(PCL REQUIRED QUIET COMPONENTS common io)
 find_package(pcl_msgs REQUIRED)
@@ -96,24 +95,10 @@ include_directories(
 
 add_subdirectory(lib)
 
-add_subdirectory(src)
-# extra image intra-process demos
-add_subdirectory(intra)
-# extra type-adaption cuda demos
-add_subdirectory(cuda)
-
-if(BUILD_TESTING)
-  add_subdirectory(test)
-endif()
-
 add_subdirectory(tool)
 
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION include/${PROJECT_NAME}/
-)
-
-install(DIRECTORY res
-  DESTINATION lib/${PROJECT_NAME}/
 )
 
 install(DIRECTORY launch
